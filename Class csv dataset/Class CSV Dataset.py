@@ -4,8 +4,14 @@ import numpy
 import pandas
 
 class csv_object:
-    def get_csv_dataset():
-        os.chdir('''path-csv-dataset''')
+
+    # Get a csv file from a directory
+    #TODO: Check syntax error. Something wrong the name of the variable path-csv-dataset?
+    def get_csv_dataset(self, path-csv-dataset = "Insert a directory"):
+        print(os.chdir("Insert a directory".format(path-csv-dataset))
+
+TestDataframe=csv_object()
+TestDataframe.get_csv_dataset(self, path-csv-dataset="/home/henrike/Dokumente/GitHub/Predicting_bike_rental_demand")
 
 
 """Creates a dataset object from a csv file
