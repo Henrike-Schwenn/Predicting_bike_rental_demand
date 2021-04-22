@@ -7,8 +7,14 @@ class csv_object:
 
     # Get a csv file from a directory
     #TODO: Check syntax error. Something wrong the name of the variable path-csv-dataset?
+    #TODO path-csv-dataset Syntax Error - Put "Insert Link" Into curly brackets?
     def get_csv_dataset(self, path-csv-dataset = "Insert a directory"):
         print(os.chdir("Insert a directory".format(path-csv-dataset))
+         #Verify if the format is actually csv
+          #TODO Insert splitext() to check if file extension is .csv
+            #If yes, proceed
+            #If no, print error message: "Please select a .csv file"
+        
 
 TestDataframe=csv_object()
 TestDataframe.get_csv_dataset(self, path-csv-dataset="/home/henrike/Dokumente/GitHub/Predicting_bike_rental_demand")
