@@ -1,0 +1,10 @@
+<<<<<<< HEAD
+Issue #,Issue Name,Date of completion,Type of task,Total working time in minutes
+8,Troubleshooting Numpy import error,12.03.2021,Debugging,427
+12,Write Acknowledgement page,19.03.2021,Documentation,5
+14,Set up PyCharm,25.03.2021,Setup,66
+=======
+Issue #,Issue Name,Date of completion,Total working time in minutes
+8,Troubleshooting Numpy import error,12.03.2021,427
+15, Watch GitHub Tutorial and push to master, 12.04.2021,Setup,6
+>>>>>>> c16ae681c2dd56534cd6d797fa846eb0deac6c5
