@@ -1,24 +1,32 @@
 import os
-import sys
-import numpy
-import pandas
 
-class csv_object:
 
-    # Get a csv file from a directory
-    #TODO: Check syntax error. Something wrong the name of the variable path-csv-dataset?
-    #TODO path-csv-dataset Syntax Error - Put "Insert Link" Into curly brackets?
-    def get_csv_dataset(self, path-csv-dataset = "Insert a directory"):
-        print(os.chdir("Insert a directory".format(path-csv-dataset))
-         #Verify if the format is actually csv
-          #TODO Insert splitext() to check if file extension is .csv
-            #If yes, proceed
-            #If no, print error message: "Please select a .csv file"
-        
+class CsvObject:
+    import os
+    import sys
+    import numpy
+    import pandas
 
-TestDataframe=csv_object()
-TestDataframe.get_csv_dataset(self, path-csv-dataset="/home/henrike/Dokumente/GitHub/Predicting_bike_rental_demand")
+    path_csv_dataset = ""
 
+    def __init__(self):
+        self.path_csv_dataset = "Please insert a directory leading to a csv file. :)"
+
+    def get_path_csv_dataset(self):
+        print(os.chdir({0}.format(self.path_csv_dataset)))
+        #TODO AttributeError: 'set' object has no attribute 'format'
+        #Change to the directory which contains the csv file
+        #Print directory
+        #Verify if the format is actually csv
+        #TODO Insert splitext() to check if file extension is .csv
+        #If yes, proceed by creating a data frame with pd.readcsv()
+        #TODO Insert pd.readcsv()
+        #If no, print error message: "Please select a .csv file"
+
+
+TestDataframe = CsvObject()
+TestDataframe.path_csv_dataset = "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Prediciting_Bike_Rental_Demand/Class csv dataset/Test_csv_file.csv"
+TestDataframe.get_path_csv_dataset()
 
 """Creates a dataset object from a csv file
 
