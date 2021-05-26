@@ -1,11 +1,12 @@
-class CsvObject:
-    import os
-    import sys
-    import numpy
-    import pandas
+import os
+import numpy
+import pandas
 
-    def __init__(self, pathCsvDataset=r"Please insert a directory leading to a csv file. :)"):
+class CsvObject:
+
+    def __init__(self, pathCsvDataset="Directory leading to a csv file", csvDataset="Csv file to be read"):
         self.pathCsvDataset = pathCsvDataset
+        self.csvDataset = csvDataset
 
     def GetPath(self):
         return self.pathCsvDataset
@@ -13,28 +14,34 @@ class CsvObject:
     def SetPath(self, pathCsvDataset):
         self.pathCsvDataset = pathCsvDataset
 
-    def __str__(self):
-        return "{0}".format(self.pathCsvDataset)
+    def GetDataset(self):
+        return self.csvDataset
+
+    def SetDataset(self, csvDataset):
+        self.csvDataset = csvDataset
+
 
     def CreateDataframe(self):
-        os.chdir(self.pathCsvDataset)
-
         # Change to the directory which contains the csv file
-        # Print directory
-        # TODO AttributeError: 'set' object has no attribute 'format'
-        # Verify if the format is actually csv
-        name, extension = os.path.splitext(self.pathCsvDataset)
-        # If yes, proceed by creating a data frame with pd.readcsv()
-        if extension == ".csv":
-            pandas.read_csv(pathCsvDataset)
-        else:
-            print("Please select a .csv file")
-        # If no, print error message: "Please select a .csv file"
+        os.chdir(self.pathCsvDataset)
+        # TODO Verify if the format is actually csv
+        '''name, extension = os.path.splitext(self.pathCsvDataset)
+           # If yes, proceed by creating a data frame with pd.readcsv()
+           if extension == ".csv":
+               pandas.read_csv(pathCsvDataset)
+           else:
+               print("Please select a .csv file")
+           # If no, print error message: "Please select a .csv file"'''
+        pandas.read_csv(self.csvDataset)
+
+    # TODO Check further requirements to the class
+    # TODO
 
 
-TestDataframe = CsvObject("C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Prediciting_Bike_Rental_Demand/CsvDataset/Test_csv_file.csv")
-# TODO Make Python accept the directory!
-    # TODO Try deleting the blanks, rename folder "Class csv dataset"
+
+
+
+TestDataframe = CsvObject("C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/CsvDataset", "Test_csv_file.csv")
 TestDataframe.CreateDataframe()
 
 """Creates a dataset object from a csv file
