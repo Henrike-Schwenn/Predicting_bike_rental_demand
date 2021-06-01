@@ -1,12 +1,15 @@
 import os
+from typing import Any, Union
+
 import numpy
 import pandas
 
 class CsvObject:
 
-    def __init__(self, pathCsvDataset="Directory leading to a csv file", csvDataset="Csv file to be read"):
+    def __init__(self, pathCsvDataset="Directory leading to a csv file", csvDataset="Csv file to be read", csvDataframe="Name of Dataframe"):
         self.pathCsvDataset = pathCsvDataset
         self.csvDataset = csvDataset
+        self.csvDataframe = pandas.read_csv(self.csvDataset) == csvDataframe  #Double equal signs!!
 
     def GetPath(self):
         return self.pathCsvDataset
@@ -20,6 +23,11 @@ class CsvObject:
     def SetDataset(self, csvDataset):
         self.csvDataset = csvDataset
 
+    def GetDataframe(self):
+        return self.csvDataframe
+
+    def SetDataframe(self, csvDataframe):
+        self.csvDataframe = csvDataframe
 
     def CreateDataframe(self):
         # Change to the directory which contains the csv file
@@ -32,7 +40,8 @@ class CsvObject:
            else:
                print("Please select a .csv file")
            # If no, print error message: "Please select a .csv file"'''
-        pandas.read_csv(self.csvDataset)
+        return self.csvDataframe
+
 
     # TODO Check further requirements to the class
     # TODO
@@ -41,8 +50,7 @@ class CsvObject:
 
 
 
-TestDataframe = CsvObject("C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/CsvDataset", "Test_csv_file.csv")
-TestDataframe.CreateDataframe()
+TestDataframe = CsvObject("C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/CsvDataset", "Test_csv_file.csv", "testDataframe")
 
 """Creates a dataset object from a csv file
 
