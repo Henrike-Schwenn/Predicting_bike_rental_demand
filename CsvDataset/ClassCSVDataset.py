@@ -47,11 +47,6 @@ class CsvObject:
     # TODO
 
 
-
-
-
-TestDataframe = CsvObject("C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/CsvDataset", "Test_csv_file.csv", "testDataframe")
-
 """Creates a dataset object from a csv file
 
 
