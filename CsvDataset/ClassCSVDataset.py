@@ -8,7 +8,7 @@ class CsvObject:
 
     def __init__(self, pathCsvDataset="Directory leading to a csv file", csvDataset="Csv file to be read", csvDataframe="Name of Dataframe"):
         self.pathCsvDataset = pathCsvDataset
-        self.csvDataset = csvDataset
+        self.csvDataset = os.chdir(self.pathCsvDataset) == csvDataset
         self.csvDataframe = pandas.read_csv(self.csvDataset) == csvDataframe  #Double equal signs!!
 
     def GetPath(self):
@@ -28,19 +28,6 @@ class CsvObject:
 
     def SetDataframe(self, csvDataframe):
         self.csvDataframe = csvDataframe
-
-    def CreateDataframe(self):
-        # Change to the directory which contains the csv file
-        os.chdir(self.pathCsvDataset)
-        # TODO Verify if the format is actually csv
-        '''name, extension = os.path.splitext(self.pathCsvDataset)
-           # If yes, proceed by creating a data frame with pd.readcsv()
-           if extension == ".csv":
-               pandas.read_csv(pathCsvDataset)
-           else:
-               print("Please select a .csv file")
-           # If no, print error message: "Please select a .csv file"'''
-        return self.csvDataframe
 
 
     # TODO Check further requirements to the class
@@ -83,3 +70,4 @@ What it's gonna do
 
 - get_dataset = os.chdir(path)
 - display_dataset = read_csv()"""
+

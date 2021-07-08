@@ -1,4 +1,6 @@
 import sys
+import os
+import pandas
 
 sys.path.append(
     "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/CsvDataset")
