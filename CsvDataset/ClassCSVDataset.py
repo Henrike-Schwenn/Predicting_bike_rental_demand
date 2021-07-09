@@ -8,8 +8,14 @@ class CsvObject:
 
     def __init__(self, pathCsvDataset="Directory leading to a csv file", csvDataset="Csv file to be read", csvDataframe="Name of Dataframe"):
         self.pathCsvDataset = pathCsvDataset
-        self.csvDataset = os.chdir(self.pathCsvDataset) == csvDataset
-        self.csvDataframe = pandas.read_csv(self.csvDataset) == csvDataframe  #Double equal signs!!
+        self.csvDataset = csvDataset
+        self.csvDataframe = csvDataframe
+        self.CreateDataframe()
+
+    def CreateDataframe(self):
+        os.chdir(self.pathCsvDataset)
+        #TODO: Verify data format csv
+        return self.csvDataframe == pandas.read_csv(self.csvDataset, low_memory=False)
 
     def GetPath(self):
         return self.pathCsvDataset
@@ -33,6 +39,8 @@ class CsvObject:
     # TODO Check further requirements to the class
     # TODO
 
+TestTrainSet=CsvObject("C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/Datasets", "train.csv","testTrainingSet")
+print(TestTrainSet.CreateDataframe())
 
 """Creates a dataset object from a csv file
 
