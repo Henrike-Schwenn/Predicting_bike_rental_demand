@@ -1,14 +1,8 @@
 import sys
 import os
 import pandas
+import numpy
 
-sys.path.append(
-    "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/CsvDataset")
-import CsvDataset.ClassCSVDataset
+trainingSetFirstCycle=pandas.read_csv("C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/Datasets/train.csv")
+print(trainingSetFirstCycle)
 
-print("Huch!")
-TrainingSet = CsvDataset.ClassCSVDataset.CsvObject(
-    "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/Datasets",
-    "train.csv", "trainingSet")
-print(TrainingSet.__class__)
-TrainingSet.CreateDataframe()
