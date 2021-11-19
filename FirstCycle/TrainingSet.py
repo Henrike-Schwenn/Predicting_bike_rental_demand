@@ -1,5 +1,3 @@
-import sys
-import os
 import pandas
 import numpy
 import torch
@@ -20,10 +18,8 @@ dfFirstCycle = add_datepart(dfFirstCycle, "datetime", drop=True)
 # Split dfFirstCycle in half. The first 5443 rows are the training set, the second are the validation set.
 dfFirstCycle_train, dfFirstCycle_validate = dfFirstCycle.iloc[:5443].copy(),dfFirstCycle.iloc[5443:].copy()
 # Save dependent variable into an array
-y_name_validation = dfFirstCycle_validate.rent_coun
-#TODO Transform y_name_validation to pd.dataframe
-#TODO Save y_name_validation into feather format
-#y_name_validation.to_feather("C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/FirstCycle/y_name_validation.ftr")
+y_name_validation = dfFirstCycle_validate.rent_count
+y_name_validation.to_csv("C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/FirstCycle/y_name_validation.csv")
 # Drop dependent variable from the validation set
 dfFirstCycle_validate.drop('rent_count', axis=1, inplace=True)
 # Define categorical variables
@@ -35,5 +31,5 @@ procs = [Categorify, FillMissing, Normalize]
 # Define splits
 splits = RandomSplitter()(range_of(dfFirstCycle_train))
 trainingFirstCycle = TabularPandas(dfFirstCycle_train, procs, cat_names, cont_names, y_names="rent_count", splits=splits)
-# TODO Save dataframes into feather format
+# Save dataframes into feather format
 dfFirstCycle_train.to_feather("C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/FirstCycle/trainingFirstCycle")
