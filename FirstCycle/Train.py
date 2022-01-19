@@ -1,9 +1,11 @@
 # Train Random Forest Regressor on dataframe trainingFirstCycle
+import math
 import pandas
 import sklearn
 import fastai
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.datasets import make_regression
+from sklearn.metrics import mean_squared_error
 import feather
 import unittest
 
@@ -20,13 +22,16 @@ Y_validate = pandas.read_csv(
     "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/FirstCycle/y_name_validation.csv")
 # Create sklearn.ensemble.RandomForestRegressor() object
 RF1 = sklearn.ensemble.RandomForestRegressor()
-# TODO Run fit method on training set
+# Run fit method on training set
 RF1.fit(X_train, Y_train)
-# TODO Run print_score function on training and validation sets
-'''Where does print_score access X_validate and Y_validate, exactly? Or is it this method that takes care of the 
-splitting into training and validation sets automatically, so I wouldn't have needed to do that in the first place? '''
-x1=RF1.predict(X_validate)
-print(x1)
+# Predict y variable in validation set.
+y_pred=RF1.predict(X_validate)
+y_true=Y_validate
+# TODO Fix value error
+# TODO Fix parameter squared=False
+score=sklearn.metrics.mean_squared_log_error(y_true, y_pred)
+print(score)
+
 # TODO Return parameters
 
 if __name__ == '__main__':
