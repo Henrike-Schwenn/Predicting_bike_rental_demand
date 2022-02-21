@@ -3,6 +3,7 @@ import os
 import psutil
 import math
 import time
+import matplotlib.pyplot
 import pandas
 import sklearn
 import fastai
@@ -17,34 +18,45 @@ import unittest
 # Nanoseconds since the epoch, which is 1 January 1601, 00:00:00 for Windows
 # At the beginning of the process
 start = time.process_time_ns()
+
 # Read feather formatted trainingFirstCycle and define as array X_train. This is the training set
 X_train = pandas.read_feather(
     "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/FirstCycle/trainingFirstCycle.feather")
 # Define X_train.rent_count as dependent variable Y_train. This is the dependent variable of the training set, the column to be predicted.
 Y_train = X_train.rent_count
 # TODO Visualize X_train and Y_train in a scatterplot
-    # Pandas method dataframe.plot.scatter
-X_train.plot.scatter()
-    # TODO Set properties of scatterplot (colour, grading, etc.)
+    # TODO Find a plot function that accepts multiple x columns
+    # TODO Or create multiple plots and try to combine them
+
 # Read csv formatted evalidateFirstCycle and define as array X_validate. This is the name of the validation set.
 X_validate = pandas.read_csv(
     "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/FirstCycle/validateFirstCycle.csv")
 # Read y_name_validation.csv and define as Y_validate. This is the dependent variable of the validation set, the column to be predicted.
 Y_validate = pandas.read_csv(
     "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/FirstCycle/y_name_validation.csv")
+
 # Create sklearn.ensemble.RandomForestRegressor() object
 RF1 = sklearn.ensemble.RandomForestRegressor()
 # Run fit method on training set
 RF1.fit(X_train, Y_train)
 # Predict y variable in validation set.
-# TODO Visualize RF1.fit using export_graphviz
+# Visualize RF1.fit using export_graphviz
+# https://scikit-learn.org/stable/modules/generated/sklearn.tree.export_graphviz.html
+# Extract a single tree from the forest
+estimator=RF1.estimators_[5]
+sklearn.tree.export_graphviz(estimator, out_file="C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie"
+                                                 "/Predicting_Bike_Rental_Demand/FirstCycle/RF1.dot")
+
 y_pred=RF1.predict(X_validate)
 y_true=Y_validate
 # TODO Fix value error
 # TODO Fix parameter squared=False
+
 score=sklearn.metrics.mean_squared_log_error(y_true, y_pred)
 print(score)
 # TODO Visualize score
+    # DataFrame.plot.scatter()
+    # matplotlib.scatter(x,y)
 
 # Return further parameters
 
@@ -64,6 +76,7 @@ print("CPU used:", cpu_usage, "%")
 print("RAM memory used:", psutil.virtual_memory()[2]), "%")
 # TODO Visualize parameters
 # TODO Save all prints into a file
+# Dashboard
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
