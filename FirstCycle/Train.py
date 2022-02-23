@@ -43,7 +43,6 @@ Y_validate = pandas.read_csv(
 RF1 = sklearn.ensemble.RandomForestRegressor()
 # Run fit method on training set
 RF1.fit(X_train, Y_train)
-# Predict y variable in validation set.
 # Visualize RF1.fit using export_graphviz
 # https://scikit-learn.org/stable/modules/generated/sklearn.tree.export_graphviz.html
 # Extract a single tree from the forest
@@ -52,12 +51,14 @@ RF1_sample=sklearn.tree.export_graphviz(estimator,
                                  out_file="C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie"
                                                  "/Predicting_Bike_Rental_Demand/FirstCycle/RF1.dot")
 
+# Predict y variable in validation set.
 y_pred=RF1.predict(X_validate)
-y_true=Y_validate.to_numpy()
-# TODO Fix value error
-# TODO Fix parameter squared=False
+# TODO Visualize prediction?
+y_true=Y_validate.rent_count.to_numpy()
 
+# Evaluate prediction
 score=sklearn.metrics.mean_squared_log_error(y_true, y_pred)
+# TODO Take square root
 print(score)
 # TODO Visualize score
     # DataFrame.plot.scatter()
