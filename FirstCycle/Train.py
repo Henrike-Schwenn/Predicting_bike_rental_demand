@@ -27,10 +27,10 @@ X_train = pandas.read_feather(
 Y_train = X_train.rent_count
 # Visualize X_train and Y_train in a scatterplot
 # Some examples
-Season=X_train.plot.scatter(x="season", y="rent_count")
-Windspeed=X_train.plot.scatter(x="windspeed", y="rent_count")
-Humidity=X_train.plot.scatter(x="humidity", y="rent_count")
-Temperature=X_train.plot.scatter(x="temp", y="rent_count")
+# Season=X_train.plot.scatter(x="season", y="rent_count")
+# Windspeed=X_train.plot.scatter(x="windspeed", y="rent_count")
+# Humidity=X_train.plot.scatter(x="humidity", y="rent_count")
+# Temperature=X_train.plot.scatter(x="temp", y="rent_count")
 
 # Read csv formatted evalidateFirstCycle and define as array X_validate. This is the name of the validation set.
 X_validate = pandas.read_csv(
@@ -56,10 +56,8 @@ y_pred=RF1.predict(X_validate)
 # TODO Visualize prediction?
 y_true=Y_validate.rent_count.to_numpy()
 
-# Evaluate prediction
-score=sklearn.metrics.mean_squared_log_error(y_true, y_pred)
-# TODO Take square root
-print(score)
+# Evaluate prediction using root mean squared log error
+scoreRMSLE=math.sqrt(sklearn.metrics.mean_squared_log_error(y_true, y_pred))
 # TODO Visualize score
     # DataFrame.plot.scatter()
     # matplotlib.scatter(x,y)
@@ -71,15 +69,13 @@ print(score)
 end = time.process_time_ns()
 runtime = end-start
 
-# Get CPU usage
-# How much cpu is used in total numbers
-cpu_load = psutil.getloadavg()
-# How many percent of the cpu are being used. Multiply by 100 in order to get a percent instead of a decimal.
-cpu_usage = (cpu_load(os.cpu_count()) * 100
+#Code runs fine up to this point.
 
+
+
+print("Score RMSLE:", scoreRMSLE)
 print("Time elapsed:", runtime, "nanoseconds")
-print("CPU used:", cpu_usage, "%")
-print("RAM memory used:", psutil.virtual_memory()[2]), "%")
+print("RAM memory used:", psutil.virtual_memory()[2], "%")
 # TODO Visualize parameters
 # TODO Save all prints into a file
 # Dashboard
