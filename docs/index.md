@@ -1,7 +1,4 @@
-# Predicting Bike Rental Demand
-
-
-## Welcome to GitHub Pages
+## Welcome to GitHub Pages - Predicting Bike Rental Demand
 
 You can use the [editor on GitHub](https://github.com/henrike-94/Predicting_bike_rental_demand/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
 
