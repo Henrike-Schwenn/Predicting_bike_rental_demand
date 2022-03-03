@@ -1,5 +1,7 @@
 ## Predicting Bike Rental Demand
 
+### First Cycle
+
 You can use the [editor on GitHub](https://github.com/henrike-94/Predicting_bike_rental_demand/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
