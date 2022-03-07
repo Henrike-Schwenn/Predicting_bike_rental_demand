@@ -1,6 +1,37 @@
 ## Predicting Bike Rental Demand
 
-### First Cycle
+### Project Description
+
+- Title
+- What it does
+- Kaggle Competition
+- Why this one: Lesson 1
+- Dataset
+- Random Forest
+- Root Sqared Mean Log Error
+
+#### First Cycle
+
+- Steps
+- Code
+- Visualization
+- Ranking
+
+#### Second Cycle
+
+- Improvements
+- Ranking
+
+### Challenges and how I've overcome them
+
+- Challenges
+- Solutions
+- Takaways
+
+### Machine Learning for Coders
+
+
+### Credits
 
 You can use the [editor on GitHub](https://github.com/henrike-94/Predicting_bike_rental_demand/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
 
