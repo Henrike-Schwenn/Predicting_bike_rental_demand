@@ -11,8 +11,8 @@ import feather
 
 # Create a dataframe
 dfFirstCycle = pandas.read_csv(
-    "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/Datasets/train"
-    ".csv",
+    "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie"
+    "/Predicting_Bike_Rental_Demand/Datasets/train.csv",
     low_memory=False, parse_dates=["datetime"])
 # Calculate the log for each value in dependent variable "count"
 '''Each value in "rent_count" is being replaced by its log natural logarithm by
@@ -21,14 +21,15 @@ dfFirstCycle.rent_count = numpy.log(dfFirstCycle.rent_count)
 # Use fastai function "add_datepart"
 dfFirstCycle = add_datepart(dfFirstCycle, "datetime", drop=True)
 # Split dfFirstCycle in half.
-# The first 5443 rows are the training set, the second are the validation set.
+# The first 5443 rows are the training set, the second are the test set.
 dfFirstCycle_train, dfFirstCycle_validate = dfFirstCycle.iloc[
                                             :5443].copy(), dfFirstCycle.iloc[
                                                            5443:].copy()
 # Save dependent variable into an array
 y_name_validation = dfFirstCycle_validate.rent_count
 y_name_validation.to_csv(
-    "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/FirstCycle/y_name_validation.csv")
+    "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie"
+    "/Predicting_Bike_Rental_Demand/FirstCycle/y_name_validation.csv")
 # Drop dependent variable from the validation set
 dfFirstCycle_validate.drop('rent_count', axis=1, inplace=True)
 # Define categorical variables
@@ -49,10 +50,12 @@ trainingFirstCycle = TabularPandas(dfFirstCycle_train, procs, cat_names,
                                    splits=splits)
 # Save dataframes into feather format
 dfFirstCycle_train.to_feather(
-    "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/FirstCycle/trainingFirstCycle.feather")
+    "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/"
+    "Sprachtechnologie/Predicting_Bike_Rental_Demand/FirstCycle/trainingFirstCycle.feather")
 
 dfFirstCycle_validate.to_csv(
-    "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg/Sprachtechnologie/Predicting_Bike_Rental_Demand/FirstCycle/validateFirstCycle.csv")
+    "C:/Users/henri/OneDrive/Dokumente/Berufseinstieg"
+    "/Sprachtechnologie/Predicting_Bike_Rental_Demand/FirstCycle/validateFirstCycle.csv")
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
