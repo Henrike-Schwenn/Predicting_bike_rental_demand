@@ -48,7 +48,7 @@ rf_2.fit(train_second_cycle, train_second_cycle.rent_count)
 
 rf_2_trained_path = ("C:/Users/henri/OneDrive/Dokumente/Berufseinstieg"
                      "/Sprachtechnologie/Predicting_Bike_Rental_Demand"
-                     "/Datasets/rf_2_trained.joblib")
+                     "/Second Cycle/rf_2_trained.joblib")
 
 rf_2_trained = joblib.dump(rf_2, rf_2_trained_path, compress=3)
 
