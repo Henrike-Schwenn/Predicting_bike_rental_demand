@@ -2,7 +2,6 @@
 
 import time
 import joblib
-import numpy
 import pandas
 import psutil
 from fastai.tabular.core import add_datepart
@@ -21,19 +20,6 @@ test_second_cycle = pandas.read_csv(
 
 test_second_cycle = add_datepart(test_second_cycle, "datetime", drop=True)
 
-# Dataframe Test Set y
-
-test_y_path = ("C:/Users/henri/OneDrive/Dokumente/Berufseinstieg"
-              "/Sprachtechnologie/Predicting_Bike_Rental_Demand/Datasets"
-              "/test_y.csv")
-
-test_y_second_cycle = pandas.read_csv(
-    test_y_path, low_memory=False, parse_dates=["datetime"])
-
-test_y_second_cycle = add_datepart(test_y_second_cycle, "datetime", drop=True)
-
-test_y_second_cycle.rent_count = numpy.log(test_y_second_cycle.rent_count)
-
 # Run Random Forest Regressor
 
 rf_2_trained_path = ("C:/Users/henri/OneDrive/Dokumente/Berufseinstieg"
@@ -42,7 +28,9 @@ rf_2_trained_path = ("C:/Users/henri/OneDrive/Dokumente/Berufseinstieg"
 
 rf_2_trained = joblib.load(rf_2_trained_path)
 
-y_pred = rf_2_trained.predict
+y_pred = rf_2_trained.predict(test_second_cycle)
+
+# TODO Export y_pred into csv
 
 # Measure Performance
 

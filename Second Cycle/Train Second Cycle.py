@@ -24,13 +24,15 @@ train_second_cycle = pandas.read_csv(
 train_second_cycle = add_datepart(train_second_cycle, "datetime", drop=True)
 
 train_second_cycle.rent_count = numpy.log(train_second_cycle.rent_count)
+train_second_cycle.drop('casual', axis=1, inplace=True)
+train_second_cycle.drop('windspeed', axis=1, inplace=True)
 
 cat_names = ['season', 'holiday', 'workingday', 'weather',
              'datetimeIs_month_end', 'datetimeIs_month_start',
              'datetimeIs_quarter_end', 'datetimeIs_quarter_start',
              'datetimeIs_year_end', 'datetimeIs_year_start']
 
-cont_names = ['temp', 'atemp', 'humidity', 'windspeed', 'casual', 'registered',
+cont_names = ['temp', 'atemp', 'humidity', 'registered',
               'rent_count']
 
 procs = [Categorify, FillMissing, Normalize]
